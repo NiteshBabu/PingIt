@@ -8,7 +8,7 @@ const generateUsername = () =>
 	`${POKEMON[Math.floor(Math.random() * POKEMON.length)] + '-' + nanoid()}`
 
 export default function useUsername() {
-	const [username, setUsername] = useState('')
+	const [username, setUsername] = useState<string | null>(null)
 
 	useEffect(() => {
 		let storedUser = localStorage.getItem(USERNAME_KEY)
@@ -21,6 +21,6 @@ export default function useUsername() {
 		localStorage.setItem(USERNAME_KEY, newUsername)
 		setUsername(newUsername)
 	}, [])
-	
-  return username
+
+	return username
 }
