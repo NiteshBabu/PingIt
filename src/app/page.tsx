@@ -1,8 +1,9 @@
 'use client'
 
+import PokemonSpriteSkeleton from '@/components/PokemonSprite'
 import useUsername from '@/hooks/use-username'
 import { client } from '@/lib/client'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function Home() {
@@ -22,7 +23,6 @@ export default function Home() {
 		enabled: false,
 		queryKey: ['room'],
 	})
-	console.log({username})
 	return (
 		<div className='h-screen grid gap-10 place-content-center font-mono'>
 			{error && (
@@ -35,10 +35,16 @@ export default function Home() {
 			)}
 			<h1 className='text-5xl font-bold text-center'>PingIt</h1>
 			<div className='flex flex-col gap-5 w-2xl shadow shadow-white  h-[300px] '>
-				<p className='text-center font-bold my-5 flex flex-col gap-1 justify-center'>
-					Welcome,
-					<span className='text-center text-xl text-lime-400'>{username ?? "XXXXXXXXXXXXXXXXXXXXXXXXX"}</span>
-				</p>
+				{username ? (
+					<p className='text-center font-bold my-5 flex flex-col gap-1 justify-center'>
+						Welcome
+						<span className='text-xl text-lime-400 flex items-center justify-center'>
+							{username}
+						</span>
+					</p>
+				) : (
+					<PokemonSpriteSkeleton />
+				)}
 				<button
 					className='bg-emerald-500 px-5 py-3 font-bold cursor-pointer mt-auto disabled:opacity-70 disabled:pointer-events-none'
 					disabled={isFetching}

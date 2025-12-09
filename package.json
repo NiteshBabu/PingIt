@@ -12,12 +12,16 @@
   "dependencies": {
     "@elysiajs/eden": "^1.4.5",
     "@tanstack/react-query": "^5.90.12",
+    "@upstash/realtime": "^1.0.0",
     "@upstash/redis": "^1.35.7",
+    "date-fns": "^4.1.0",
     "elysia": "^1.4.18",
+    "js-confetti": "^0.13.1",
     "nanoid": "^5.1.6",
     "next": "16.0.7",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",

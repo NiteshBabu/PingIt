@@ -11,16 +11,15 @@ export default function useUsername() {
 	const [username, setUsername] = useState<string | null>(null)
 
 	useEffect(() => {
-		let storedUser = localStorage.getItem(USERNAME_KEY)
-
+		const storedUser = localStorage.getItem(USERNAME_KEY)
 		if (storedUser) {
 			setUsername(storedUser)
 			return
 		}
-		let newUsername = generateUsername()
-		localStorage.setItem(USERNAME_KEY, newUsername)
-		setUsername(newUsername)
-	}, [])
+		const newName = generateUsername()
+		setUsername(newName)
+		localStorage.setItem(USERNAME_KEY, newName)
+	}, [username])
 
 	return username
 }
