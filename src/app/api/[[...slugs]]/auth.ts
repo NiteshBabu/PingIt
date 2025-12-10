@@ -32,3 +32,5 @@ export const authMiddleware = new Elysia({ name: 'auth' })
 
 		return { auth: { roomId, token, connected } }
 	})
+
+export const runtime = 'edge' 
