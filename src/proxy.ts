@@ -45,4 +45,3 @@ export const config = {
 	matcher: '/room:path*',
 }
 
-export const runtime = 'edge'
