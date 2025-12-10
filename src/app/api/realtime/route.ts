@@ -1,4 +1,6 @@
-import { handle } from '@upstash/realtime'
 import { realtime } from '@/lib/realtime'
+import { handle } from '@upstash/realtime'
 
 export const GET = handle({ realtime })
+
+export const runtime = 'edge'

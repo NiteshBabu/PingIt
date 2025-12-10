@@ -5,9 +5,9 @@ import { client } from '@/lib/client'
 import { Message } from '@/lib/realtime'
 import { useRealtime } from '@/lib/realtime-client'
 import { useMutation, useQuery } from '@tanstack/react-query'
+import { formatDate } from 'date-fns'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { formatDate } from 'date-fns'
 const formatTime = (seconds: number) => {
 	const mins = Math.floor(seconds / 60)
 	const secs = seconds % 60
@@ -228,3 +228,5 @@ const Page = () => {
 }
 
 export default Page
+
+export const runtime = 'edge'

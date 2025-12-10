@@ -1,9 +1,9 @@
+import { Message, realtime } from '@/lib/realtime'
+import { redis } from '@/lib/redis'
 import { Elysia } from 'elysia'
 import { nanoid } from 'nanoid'
-import { redis } from '@/lib/redis'
-import { authMiddleware } from './auth'
 import z from 'zod'
-import { Message, realtime } from '@/lib/realtime'
+import { authMiddleware } from './auth'
 
 const ROOM_TTL_SECONDS = 600
 
@@ -107,3 +107,6 @@ export type app = typeof app
 export const GET = app.fetch
 export const POST = app.fetch
 export const DELETE = app.fetch
+
+
+export const runtime = "edge"
