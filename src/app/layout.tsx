@@ -23,11 +23,10 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-
 	return (
 		<html lang='en'>
 			<body
-				className={`max-w-3xl bg-lime-200  mx-auto h-screen ${geistSans.variable} ${geistMono.variable} antialiased`}>
+				className={`max-w-3xl bg-lime-200  mx-auto h-screen p-4 ${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<Provider>{children}</Provider>
 			</body>
 		</html>

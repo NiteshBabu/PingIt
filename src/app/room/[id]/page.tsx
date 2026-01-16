@@ -127,32 +127,34 @@ const Page = () => {
 	})
 
 	return (
-		<div className=' h-screen grid grid-row-[auto_1fr_auto] py-5 font-mono'>
-			<div className='flex justify-between items-center self-start flex-wrap'>
-				<div className='flex gap-2 items-center'>
-					<button
-						onClick={() => destroyRoom()}
-						className='bg-red-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none'>
-						Destroy Room
-					</button>
-					<p
-						className={`font-bold ${
-							timer && timer < 300
-								? 'text-red-500 animate-pulse'
-								: 'text-amber-400'
-						}`}>
-						{timer && timer >= 1 ? formatTime(timer) : 'XX:XX'}
-					</p>
-				</div>
-				<p className='text-xs'>{username}</p>
-				<div className='flex gap-2 items-center justify-end '>
-					<p className=' font-mono'>{id}</p>
-					<button
-						onClick={handleCopy}
-						disabled={copyBtnText === 'Copied!'}
-						className='bg-emerald-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none'>
-						{copyBtnText}
-					</button>
+		<div className=' h-screen grid grid-rows-[auto_1fr_auto] pt-3 pb-5 font-mono gap-4'>
+			<div className='flex flex-col items-center gap-2'>
+				<p className='text-xs font-bold'>{username}</p>
+				<div className='flex justify-between items-center self-start flex-wrap w-full gap-2'>
+					<div className='flex gap-2 items-'>
+						<button
+							onClick={() => destroyRoom()}
+							className='bg-red-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none'>
+							Destroy Room
+						</button>
+						<p
+							className={`font-bold ${
+								timer && timer < 300
+									? 'text-red-500 animate-pulse'
+									: 'text-amber-400'
+							}`}>
+							{timer && timer >= 1 ? formatTime(timer) : 'XX:XX'}
+						</p>
+					</div>
+					<div className='flex-1 flex gap-2 items-center justify-end'>
+						<p className='font-mono'>{id}</p>
+						<button
+							onClick={handleCopy}
+							disabled={copyBtnText === 'Copied!'}
+							className='bg-emerald-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none'>
+							{copyBtnText}
+						</button>
+					</div>
 				</div>
 			</div>
 			<div className='grid gap-2'>

@@ -33,7 +33,7 @@ function Home() {
 		queryKey: ['room'],
 	})
 	return (
-		<div className='h-screen grid gap-10 place-content-center font-mono'>
+		<div className='h-screen grid gap-10 place-content-center font-mono justify-stretch'>
 			{error && (
 				<div className='text-center text-red-500 font-bold text-xl'>
 					<p>
@@ -43,7 +43,7 @@ function Home() {
 				</div>
 			)}
 			<h1 className='text-5xl font-bold text-center'>PingIt</h1>
-			<div className='flex flex-col gap-5 w-2xl shadow shadow-white  h-[300px] '>
+			<div className='flex flex-col gap-5 shadow shadow-white h-[300px]'>
 				{username ? (
 					<p className='text-center font-bold my-5 flex flex-col gap-1 justify-center'>
 						Welcome
