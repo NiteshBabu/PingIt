@@ -7,7 +7,7 @@ import { useRealtime } from '@/lib/realtime-client'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { formatDate } from 'date-fns'
 import { useParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 const formatTime = (seconds: number) => {
 	const mins = Math.floor(seconds / 60)
 	const secs = seconds % 60
@@ -44,7 +44,9 @@ const Page = () => {
 	const [msg, setMsg] = useState('')
 	const { id } = useParams()
 	const username = useUsername()
-
+	const containerRef = useRef<HTMLDivElement | null>(null)
+	const bottomRef = useRef<HTMLDivElement | null>(null)
+	const [isBottom, setIsBottom] = useState(true)
 	const router = useRouter()
 
 	const handleCopy = async () => {
@@ -54,6 +56,14 @@ const Page = () => {
 		setTimeout(() => {
 			setCopyBtnText('Copy')
 		}, 3000)
+	}
+
+	const handleScroll = () => {
+		const el = containerRef.current
+		if (!el) return
+		const threshold = 200
+		const bottom = el.scrollHeight - el.scrollTop - el.clientHeight < threshold
+		setIsBottom(bottom)
 	}
 
 	const {
@@ -100,6 +110,12 @@ const Page = () => {
 			router.push('/?error=room_destroyed')
 		},
 	})
+
+	useEffect(() => {
+		if (isBottom) {
+			bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+		}
+	}, [messages, isBottom])
 
 	useEffect(() => {
 		setTimer(ttl?.data ?? 0)
@@ -157,7 +173,13 @@ const Page = () => {
 					</div>
 				</div>
 			</div>
-			<div className='grid gap-2'>
+			<div
+				className='grid gap-2 overflow-y-auto'
+				style={{
+					scrollbarWidth: 'none',
+				}}
+				ref={containerRef}
+				onScroll={handleScroll}>
 				{groupMessages(messages?.data ?? []).map((group) => (
 					<ul
 						key={group.messages[0].id}
@@ -187,6 +209,7 @@ const Page = () => {
 						))}
 					</ul>
 				))}
+				<div ref={bottomRef}></div>
 			</div>
 			<div className='self-end flex items-center gap-2 relative'>
 				<label htmlFor='message' className='sr-only'>
