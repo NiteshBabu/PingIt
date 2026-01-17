@@ -35,19 +35,19 @@ function Home() {
 	return (
 		<div className='h-screen grid gap-10 place-content-center font-mono justify-stretch'>
 			{error && (
-				<div className='text-center text-red-500 font-bold text-xl'>
+				<div className='text-center text-red-500 font-bold sm:text-xl'>
 					<p>
-						The room is {error.split('_')[1]}, please join or create another
-						room!
+						The room is {error.split('_').slice(1).join(' ')}, please join or
+						create another room!
 					</p>
 				</div>
 			)}
 			<h1 className='text-5xl font-bold text-center'>PingIt</h1>
-			<div className='flex flex-col gap-5 shadow shadow-white h-[300px]'>
+			<div className='flex flex-col gap-5 shadow-[0_8px_8px_rgba(0,0,0,1)] h-[300px]'>
 				{username ? (
 					<p className='text-center font-bold my-5 flex flex-col gap-1 justify-center'>
 						Welcome
-						<span className='text-xl text-lime-400 flex items-center justify-center'>
+						<span className='sm:text-xl text-lime-400 flex items-center justify-center'>
 							{username}
 						</span>
 					</p>

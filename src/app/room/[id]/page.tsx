@@ -127,14 +127,14 @@ const Page = () => {
 	})
 
 	return (
-		<div className=' h-screen grid grid-rows-[auto_1fr_auto] pt-3 pb-5 font-mono gap-4'>
-			<div className='flex flex-col items-center gap-2'>
+		<div className=' h-screen grid grid-rows-[auto_1fr_auto] pt-3 pb-5 font-mono gap-10'>
+			<div className='flex flex-col items-center gap-2 pb-5 border-b border-b-emerald-500'>
 				<p className='text-xs font-bold'>{username}</p>
 				<div className='flex justify-between items-center self-start flex-wrap w-full gap-2'>
 					<div className='flex gap-2 items-'>
 						<button
 							onClick={() => destroyRoom()}
-							className='bg-red-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none'>
+							className='bg-red-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none shadow-[0_8px_8px_rgba(0,0,0,1)]'>
 							Destroy Room
 						</button>
 						<p
@@ -151,7 +151,7 @@ const Page = () => {
 						<button
 							onClick={handleCopy}
 							disabled={copyBtnText === 'Copied!'}
-							className='bg-emerald-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none'>
+							className='bg-emerald-500 px-3 text-sm py-1 rounded-md font-bold cursor-pointer disabled:opacity-70 disabled:pointer-events-none shadow-[0_8px_8px_rgba(0,0,0,1)]'>
 							{copyBtnText}
 						</button>
 					</div>
@@ -195,7 +195,7 @@ const Page = () => {
 				<input
 					type='text'
 					id='message'
-					className='border w-full px-4 pr-14 outline-none rounded-full h-[51px]'
+					className='ring-2 w-full px-4 pr-14 outline-none rounded-full h-[51px] shadow-[0_8px_8px_rgba(0,0,0,1)]'
 					maxLength={100}
 					onKeyDown={(e) => {
 						if (e.key === 'Enter' && msg.trim()) createMessage()
@@ -205,7 +205,7 @@ const Page = () => {
 					value={msg}
 				/>
 				<button
-					className='border bg-emerald-500  font-bold cursor-pointer mt-auto disabled:opacity-70 disabled:pointer-events-none rounded-full absolute right-0 h-[50px] w-[50px] flex items-center justify-center group border-white'
+					className='ring-2 bg-emerald-500 font-bold cursor-pointer mt-auto disabled:opacity-60 disabled:pointer-events-none rounded-tr-full rounded-br-full absolute right-0 h-[50px] w-[50px] flex items-center justify-center group duration-300'
 					onClick={() => createMessage()}
 					disabled={!msg.trim()}
 					title='send'>
